@@ -1,0 +1,421 @@
+/* =========================================
+   VARIABLES & DESIGN SYSTEM
+   ========================================= */
+:root {
+    /* Color Palette - Navy focused brutalism */
+    --navy-dark: #001540;
+    --navy-main: #0A2463;
+    --navy-light: #2446A3;
+    --white: #FFFFFF;
+    --accent: #E11D48;
+    /* Crimson red accent common in brutalism */
+    --black: #050505;
+
+    /* Typography */
+    --font-header: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing & Borders */
+    --border-thick: 3px solid var(--navy-dark);
+    --border-thin: 1px solid var(--navy-dark);
+}
+
+/* =========================================
+   RESETS
+   ========================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* Base for rem */
+}
+
+body {
+    background-color: var(--white);
+    color: var(--navy-dark);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+/* Typography Defaults */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-header);
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   GLOBAL COMPONENTS
+   ========================================= */
+
+/* Brutalist Navigation */
+.brutalist-nav {
+    width: 100%;
+    border-bottom: var(--border-thick);
+    background-color: var(--white);
+    padding: 0.5rem 0;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    font-family: var(--font-header);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-item {
+    transition: color 0.2s ease, background-color 0.2s ease;
+    padding: 0.25rem 1rem;
+    border-radius: 999px;
+    /* Pill shape on hover */
+}
+
+.nav-item:hover {
+    color: var(--white);
+    background-color: var(--navy-main);
+}
+
+.menu-toggle {
+    display: none;
+    /* Hide on desktop, show on mobile */
+    cursor: pointer;
+}
+
+/* Massive Header (The Studio Linear replica) */
+.hero-header {
+    width: 100%;
+    border-bottom: var(--border-thick);
+    padding: 1rem 0;
+    text-align: center;
+    background-color: var(--white);
+    overflow: hidden;
+}
+
+.massive-title {
+    /* Responsive massive text */
+    font-size: clamp(3rem, 15vw, 12rem);
+    color: var(--navy-dark);
+    white-space: nowrap;
+    letter-spacing: -0.05em;
+    line-height: 0.8;
+}
+
+/* Scrolling Marquee */
+.marquee-container {
+    width: 100%;
+    border-bottom: var(--border-thick);
+    background-color: var(--white);
+    overflow: hidden;
+    padding: 0.5rem 0;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    font-family: var(--font-header);
+    font-size: 1rem;
+    color: var(--navy-dark);
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Main Grid Layout Container */
+.grid-container {
+    width: 100%;
+}
+
+.brutalist-section {
+    border-bottom: var(--border-thick);
+}
+
+/* Hero Grid */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Split screen on desktop */
+}
+
+.hero-left {
+    border-right: var(--border-thick);
+    background-color: var(--navy-dark);
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    /* Square ratio for punchy brutalism */
+    filter: saturate(1.2) contrast(1.1);
+}
+
+.hero-right {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--navy-main);
+    /* Deep navy base */
+    color: var(--white);
+}
+
+.hero-subtitle {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+.hero-text {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+/* Brutalist Button */
+.brutalist-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--white);
+    color: var(--navy-dark);
+    font-family: var(--font-header);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    border: var(--border-thick);
+    font-weight: 700;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+.brutalist-button:hover {
+    background-color: var(--accent);
+    color: var(--white);
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0 var(--navy-dark);
+}
+
+/* General Section Layouts */
+.full-width {
+    padding: 4rem 2rem;
+    background-color: var(--white);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    margin-bottom: 2rem;
+    color: var(--navy-dark);
+    letter-spacing: -0.02em;
+}
+
+.lead-text {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-family: var(--font-header);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    color: var(--navy-main);
+}
+
+.text-columns {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+}
+
+.text-columns p {
+    font-size: 1.125rem;
+}
+
+/* Works Grid */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    background-color: var(--navy-dark);
+    gap: var(--border-thick);
+    /* Creates thick borders due to background color bleeding through */
+    border-bottom: var(--border-thick);
+}
+
+.work-card {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+.work-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-bottom: var(--border-thick);
+}
+
+.work-info {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-title {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.work-desc {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    flex-grow: 1;
+}
+
+.view-project-btn {
+    align-self: flex-start;
+    font-family: var(--font-header);
+    font-weight: 700;
+    color: var(--navy-dark);
+    border-bottom: 2px solid var(--navy-dark);
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.view-project-btn:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Members Section */
+.members-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    background-color: var(--navy-light);
+    color: var(--white);
+}
+
+.members-header {
+    padding: 4rem 2rem;
+    border-right: var(--border-thick);
+}
+
+.members-header .section-title {
+    color: var(--white);
+}
+
+.members-list {
+    list-style: none;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.members-list li {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: var(--font-header);
+    text-transform: uppercase;
+    border-bottom: var(--border-thin);
+    padding: 1rem 0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    cursor: pointer;
+}
+
+.members-list li:hover {
+    color: var(--accent);
+    padding-left: 1rem;
+}
+
+/* Footer / Contact */
+.brutalist-footer {
+    background-color: var(--accent);
+    color: var(--white);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.giant-footer-text {
+    font-size: clamp(4rem, 20vw, 15rem);
+    line-height: 0.8;
+    margin-bottom: 3rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    border-top: 2px solid var(--white);
+    padding-top: 2rem;
+}
+
+.contact-link {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVENESS)
+   ========================================= */
+@media (max-width: 900px) {
+
+    .hero-grid,
+    .text-columns,
+    .members-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-left,
+    .members-header {
+        border-right: none;
+        border-bottom: var(--border-thick);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links a {
+        display: none;
+        /* In a real app, logic would toggle this */
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr;
+    }
+}
